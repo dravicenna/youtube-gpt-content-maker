@@ -13,13 +13,27 @@ The motivation behind it stems from the desire to save time and effort while sti
 
 ## Installation:
 
-### Python 3.10:
-This tool is written in Python 3.10, so it is important to have the latest version of Python installed on your machine. You can download Python 3.10 from the official Python website.
-To install the necessary packages and dependencies, run the following command in your terminal:
-`pip install -r requirements.txt`
+To install the necessary packages and dependencies, run the following next steps:
+- Clone the repository by using the following command:
+
+`git clone https://github.com/dravicenna/youtube-gpt-content-maker`
+
+- Create a virtual environment with Python 3.10 by using the following command:
+
+`python3.10 -m venv venv`
+
+- Activate the virtual environment by using the following command:
+
+`source venv/bin/activate`
+
+- Install the required packages by using the following command:
+
+`python -m pip install -r requirements.txt`
 
 ### Moviepy and ImageMagick:
 This tool utilizes Moviepy and ImageMagick to generate the final videos. It is important to have ImageMagick installed on your machine in order to run the Python script. You can download ImageMagick from the official website.
+
+With these steps, you should have successfully set up the repository and environment for the youtube-gpt-content-maker script.
 
 ## Setup:
 Before using this tool, there are a few requirements and installations that need to be made.
