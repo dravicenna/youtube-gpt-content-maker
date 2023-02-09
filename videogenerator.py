@@ -78,12 +78,10 @@ class VideoGenerator:
         video = video.set_audio(self.make_audio())
         # Resize
         video = video.resize(self.size)
-        # Create content text clips
-        header = self.header(header_text)
-        main_text = self.content(text)
-        footer = self.footer()
+        # Create a composition
+        final = [video, self.header(header_text), self.content(text), self.footer()]
         # Composing
-        return me.CompositeVideoClip([video, header, main_text, footer]).set_duration(self.duration)
+        return me.CompositeVideoClip(final).set_duration(self.duration)
 
     def generate_video(self, text: str, header_text: str) -> CompositeVideoClip:
         return self._make_main_clip(text, header_text)
