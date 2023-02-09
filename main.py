@@ -20,9 +20,13 @@ if __name__ == "__main__":
         if not os.path.exists(file_path):
             os.makedirs(file_path)
         # get list of facts on specific date
-        facts_list = generate_text_list(date)
-        for index, text in enumerate(facts_list):
-            print(f'About the text >> {text}')
-            file_name = f"{date}_{str(index+1)}.mp4"
-            video = vg.generate_video(text, date)
-            video.write_videofile(f'{file_path}/{file_name}', fps=config.FPS, preset="ultrafast")
+        while True:
+            facts_list = generate_text_list(date)
+            print(facts_list)
+            answer = input('Generate videos with this text? (y/n) Or Ctrl+c to cancel: ')
+            if answer in ['y', 'Y']:
+                for index, text in enumerate(facts_list):
+                    print(f'About the text >> {text}')
+                    file_name = f"{date}_{str(index+1)}.mp4"
+                    video = vg.generate_video(text, date)
+                    video.write_videofile(f'{file_path}/{file_name}', fps=config.FPS, preset="ultrafast")
