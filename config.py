@@ -18,4 +18,5 @@ FPS = 30
 VIDEO = 'video'
 MUSIC = 'music'
 
-PROMPT_TEMPLATE = 'Generate 12 historical, unique and memorable facts about person or event happened on the specified date. Use irony, puns, and word play to create entertaining and easily understandable facts. No references or sources required. Output format will be: ["fact1",\n"fact2",/n...,/n"fact12"]. Provide facts for the date '  # noqa
+VID_TO_GENRATE = 12  # How many videos generate for each request
+PROMPT_TEMPLATE = f'Generate {str(VID_TO_GENRATE)} historical, unique and memorable facts about the specified request. Use irony, puns, and word play to create entertaining and easily understandable facts. No references or sources required. Output format will be: ["fact1",\n"fact2",/n...,/n"fact{str(VID_TO_GENRATE)}"]. My first request is '  # noqa
