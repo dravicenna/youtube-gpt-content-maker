@@ -14,19 +14,19 @@ The motivation behind it stems from the desire to save time and effort while sti
 ## Installation:
 
 To install the necessary packages and dependencies, run the following next steps:
-- Clone the repository by using the following command:
+- Clone the repository:
 
 `git clone https://github.com/dravicenna/youtube-gpt-content-maker`
 
-- Create a virtual environment with Python 3.10 by using the following command:
+- Create a virtual environment:
 
 `python3.10 -m venv venv`
 
-- Activate the virtual environment by using the following command:
+- Activate the virtual environment:
 
 `source venv/bin/activate`
 
-- Install the required packages by using the following command:
+- Install the required packages:
 
 `python -m pip install -r requirements.txt`
 
@@ -35,7 +35,7 @@ This tool utilizes Moviepy and ImageMagick to generate the final videos. It is i
 
 With these steps, you should have successfully set up the repository and environment for the youtube-gpt-content-maker script.
 
-## Setup:
+## Project Setup:
 Before using this tool, there are a few requirements and installations that need to be made.
 
 ### Download Video and Music Templates:
