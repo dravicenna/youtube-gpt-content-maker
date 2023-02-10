@@ -20,7 +20,7 @@ To install the necessary packages and dependencies, run the following next steps
 
 - Create a virtual environment:
 
-`python3.10 -m venv venv`
+`python3.9 -m venv venv`
 
 - Activate the virtual environment:
 
