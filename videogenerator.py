@@ -3,7 +3,6 @@ import random
 from typing import Tuple
 
 import moviepy.editor as me
-from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
 
 
 class VideoGenerator:
@@ -28,11 +27,15 @@ class VideoGenerator:
     def _pick_random_file(self, file_list: list[str]) -> str:
         return random.choice(file_list)
 
-    def make_audio(self):
-        # Load the music file and set duration
-        return me.AudioFileClip(f"./{self.music_folder}/{self._pick_random_file(self.music_list)}").set_duration(self.duration)  # NOQA
+    def make_audio(self) -> me.AudioFileClip:
+        music_file = f"./{self.music_folder}/{self._pick_random_file(self.music_list)}"
+        return me.AudioFileClip(music_file).set_duration(self.duration)
 
-    def header(self, header_text):
+    def make_video(self) -> me.VideoFileClip:
+        video_file = f"./{self.video_folder}/{self._pick_random_file(self.video_list)}"
+        return me.VideoFileClip(video_file).subclip(0, self.duration)
+
+    def header(self, header_text: str) -> me.TextClip:
         return me.TextClip(
             f'Facts about\n{header_text}',
             font='Helvetica-Bold',
@@ -41,9 +44,9 @@ class VideoGenerator:
             method='label',
             stroke_color='black',
             stroke_width=1
-        ).set_duration(self.duration).set_position(("center", 150))
+        ).set_duration(self.duration).set_position(("center", 250))
 
-    def content(self, text):
+    def content(self, text: str) -> me.TextClip:
         return me.TextClip(
             text,
             font='Helvetica-Bold',
@@ -52,11 +55,9 @@ class VideoGenerator:
             bg_color='black',
             method='caption',
             size=(self.size[0]*0.8, None),
-            # stroke_color='black',
-            # stroke_width=1
         ).set_duration(self.duration).set_position("center")
 
-    def footer(self):
+    def footer(self) -> me.TextClip:
         return me.TextClip(
             f'@{self.channel_name}',
             font='Helvetica-Bold',
@@ -64,15 +65,9 @@ class VideoGenerator:
             color='white',
             bg_color='black',
             method='label',
-            # stroke_color='black',
-            # stroke_width=1
-        ).set_duration(self.duration).set_position(("center", self.size[1]*0.9))
+        ).set_duration(self.duration).set_position(("center", self.size[1]*0.8))
 
-    def make_video(self):
-        # Load the video file
-        return me.VideoFileClip(f"./{self.video_folder}/{self._pick_random_file(self.video_list)}").subclip(0, self.duration)  # NOQA
-
-    def _make_main_clip(self, text, header_text) -> CompositeVideoClip:
+    def _make_main_clip(self, text: str, header_text: str) -> me.CompositeVideoClip:
         video = self.make_video()
         # Overlay the music on the video
         video = video.set_audio(self.make_audio())
@@ -83,6 +78,6 @@ class VideoGenerator:
         # Composing
         return me.CompositeVideoClip(final).set_duration(self.duration)
 
-    def generate_video(self, text: str, header_text: str) -> CompositeVideoClip:
+    def generate_video(self, text: str, header_text: str) -> me.CompositeVideoClip:
         return self._make_main_clip(text, header_text)
         # finalclip.write_videofile(f"1.mp4", temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264", audio_codec="aac") # NOQA
