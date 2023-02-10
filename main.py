@@ -30,3 +30,4 @@ if __name__ == "__main__":
                     file_name = f"{date}_{str(index+1)}.mp4"
                     video = vg.generate_video(text, date)
                     video.write_videofile(f'{file_path}/{file_name}', fps=config.FPS, preset="ultrafast")
+                break
