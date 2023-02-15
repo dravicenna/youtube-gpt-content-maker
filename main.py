@@ -27,9 +27,9 @@ if __name__ == "__main__":
             print(facts_list)
             answer = input('Generate videos with this text? (y/n) Or Ctrl+c to cancel: ')
             if answer in ['y', 'Y']:
-                for index, text in enumerate(facts_list):
+                for text in facts_list:
                     print(f'About the text >> {text}')
                     file_name = slugify(text=text, max_length=60, word_boundary=True) + '.mp4'
                     video = vg.generate_video(text, prompt)
-                    video.write_videofile(f'{file_path}/{file_name}', fps=config.FPS, preset="ultrafast")
+                    video.write_videofile(f'{file_path}/{file_name}', fps=config.FPS, preset="ultrafast", threads=4)
                 break
